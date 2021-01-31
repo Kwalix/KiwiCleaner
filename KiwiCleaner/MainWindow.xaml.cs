@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using Path = System.IO.Path;
 
 namespace KiwiCleaner
 {
@@ -35,6 +36,7 @@ namespace KiwiCleaner
             string[] splitedDate = lastScan.Split(" ");
             LastScanLabel.Content = $"Le {splitedDate[0]} à {splitedDate[1]}";
 
+            StartScan();
         }
 
         private void CleanBtn_Click(object sender, RoutedEventArgs e)
@@ -55,6 +57,28 @@ namespace KiwiCleaner
                 string[] splitedDate = lastScanDate.Split();
                 LastScanLabel.Content = $"Le {splitedDate[0]} à {splitedDate[1]}";
             }
+        }
+
+        private void StartScan()
+        {
+            string tmpPath = Path.GetTempPath();
+            string[] tmpFiles = Directory.GetFiles(tmpPath);
+            TaskProgressBar.Maximum = tmpFiles.Length;
+
+            LogBox.Text = "";
+            LogBox.Text += $"Getting : {tmpPath}" + Environment.NewLine;
+
+            foreach (string file in tmpFiles)
+            {
+                TaskProgressBar.Value++;
+                LogBox.Text += $"Get : {file}" + Environment.NewLine;
+            }
+
+            DirectoryInfo dir = new DirectoryInfo(tmpPath);
+            long size = dir.EnumerateFiles("*.*", SearchOption.AllDirectories).Sum(fi => fi.Length);
+            SpaceToCleanLabel.Content = $"Espace à nettoyer : {size} Mb";
+
+            CleanBtn.IsEnabled = true;
         }
     }
 }
