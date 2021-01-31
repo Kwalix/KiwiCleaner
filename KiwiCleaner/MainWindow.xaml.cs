@@ -24,10 +24,16 @@ namespace KiwiCleaner
         public MainWindow()
         {
             InitializeComponent();
+            FetchLastScan();
         }
 
         private void ScanBtn_Click(object sender, RoutedEventArgs e)
         {
+            // Generate new date scan and save it to lastscan file
+            string lastScan = DateTime.Now.ToString("MM/dd/yyyy HH:mm");
+            File.WriteAllText(@".\lastscan.txt", lastScan);
+            string[] splitedDate = lastScan.Split(" ");
+            LastScanLabel.Content = $"Le {splitedDate[0]} à {splitedDate[1]}";
 
         }
 
@@ -39,6 +45,16 @@ namespace KiwiCleaner
         private void AboutBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void FetchLastScan()
+        {
+            if(File.Exists(@".\lastscan.txt"))
+            {
+               string lastScanDate = File.ReadAllText(@".\lastscan.txt");
+                string[] splitedDate = lastScanDate.Split();
+                LastScanLabel.Content = $"Le {splitedDate[0]} à {splitedDate[1]}";
+            }
         }
     }
 }
