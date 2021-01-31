@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace KiwiCleaner
 {
@@ -23,6 +24,21 @@ namespace KiwiCleaner
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ScanBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CleanBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AboutBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
