@@ -47,7 +47,8 @@ namespace KiwiCleaner
 
         private void AboutBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            About about = new About();
+            about.Show();
         }
 
         private void FetchLastScan()

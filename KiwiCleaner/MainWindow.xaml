@@ -11,7 +11,7 @@
             <Label Content="KiwiCleaner" Foreground="#FFF7E4BE" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="450" HorizontalAlignment="Left" Height="104" FontSize="36" FontFamily="Bahnschrift"/>
             <StackPanel Width="439">
                 <Label Content="Dernière analyse :" Foreground="#FFF7E4BE" FontSize="24" FontFamily="Bahnschrift"/>
-                <Label x:Name="LastScanLabel" Content="Le ??? à ???" Foreground="#FFF7E4BE" FontSize="20" FontFamily="Bahnschrift"/>
+                <Label x:Name="LastScanLabel" Content="Jamais" Foreground="#FFF7E4BE" FontSize="20" FontFamily="Bahnschrift"/>
                 <Label x:Name="SpaceToCleanLabel" Content="Espace à nettoyer : ? Mo" Foreground="#FFF7E4BE" FontSize="24" FontFamily="Bahnschrift"/>
 
             </StackPanel>
