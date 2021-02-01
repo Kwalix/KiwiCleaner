@@ -12,7 +12,7 @@
             <StackPanel Width="439">
                 <Label Content="Dernière analyse :" Foreground="#FFF7E4BE" FontSize="24" FontFamily="Bahnschrift"/>
                 <Label x:Name="LastScanLabel" Content="Le ??? à ???" Foreground="#FFF7E4BE" FontSize="20" FontFamily="Bahnschrift"/>
-                <Label x:Name="SpaceToCleanLabel" Content="Espace à nettoyer : ? mb" Foreground="#FFF7E4BE" FontSize="24" FontFamily="Bahnschrift"/>
+                <Label x:Name="SpaceToCleanLabel" Content="Espace à nettoyer : ? Mo" Foreground="#FFF7E4BE" FontSize="24" FontFamily="Bahnschrift"/>
 
             </StackPanel>
 
@@ -41,7 +41,6 @@
             <!-- Button section -->
         </StackPanel>
         <DockPanel Background="#FF413E4A">
-            <ProgressBar x:Name="TaskProgressBar" DockPanel.Dock="Top" Height="45" Width="673" Margin="0,45,0,0"/>
             <ScrollViewer Margin="37">
                 <TextBox x:Name="LogBox" IsReadOnly="True" Text="Les logs s'afficheront ici..." TextWrapping="Wrap" FontSize="14"/>
             </ScrollViewer>

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Path = System.IO.Path;
+using System.Threading;
 
 namespace KiwiCleaner
 {
@@ -41,7 +42,7 @@ namespace KiwiCleaner
 
         private void CleanBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Clean();
         }
 
         private void AboutBtn_Click(object sender, RoutedEventArgs e)
@@ -51,9 +52,9 @@ namespace KiwiCleaner
 
         private void FetchLastScan()
         {
-            if(File.Exists(@".\lastscan.txt"))
+            if (File.Exists(@".\lastscan.txt"))
             {
-               string lastScanDate = File.ReadAllText(@".\lastscan.txt");
+                string lastScanDate = File.ReadAllText(@".\lastscan.txt");
                 string[] splitedDate = lastScanDate.Split();
                 LastScanLabel.Content = $"Le {splitedDate[0]} à {splitedDate[1]}";
             }
@@ -61,24 +62,66 @@ namespace KiwiCleaner
 
         private void StartScan()
         {
+    
             string tmpPath = Path.GetTempPath();
             string[] tmpFiles = Directory.GetFiles(tmpPath);
-            TaskProgressBar.Maximum = tmpFiles.Length;
+            DirectoryInfo dir = new DirectoryInfo(tmpPath);
 
             LogBox.Text = "";
             LogBox.Text += $"Getting : {tmpPath}" + Environment.NewLine;
 
+            foreach(DirectoryInfo d in dir.GetDirectories())
+            {
+                LogBox.Text += $"Getting : {d}" + Environment.NewLine;
+            }
             foreach (string file in tmpFiles)
             {
-                TaskProgressBar.Value++;
-                LogBox.Text += $"Get : {file}" + Environment.NewLine;
+                LogBox.Text += $"Getting : {file}" + Environment.NewLine;
             }
 
-            DirectoryInfo dir = new DirectoryInfo(tmpPath);
+            
             long size = dir.EnumerateFiles("*.*", SearchOption.AllDirectories).Sum(fi => fi.Length);
-            SpaceToCleanLabel.Content = $"Espace à nettoyer : {size} Mb";
+            size /= 1024;
+            size /= 1024;
+            SpaceToCleanLabel.Content = $"Espace à nettoyer : {size} Mo";
 
             CleanBtn.IsEnabled = true;
+        }
+
+        private void Clean()
+        {
+            CleanBtn.IsEnabled = false;
+            string pathToDelFiles = Path.GetTempPath();
+            string[] toDeleteFiles = Directory.GetFiles(pathToDelFiles);
+            DirectoryInfo dir = new DirectoryInfo(pathToDelFiles);
+
+
+            foreach (DirectoryInfo d in dir.GetDirectories())
+            {
+                LogBox.Text += $"Deleting Directory : {d}" + Environment.NewLine;
+                try
+                {
+                    d.Delete(true);
+                } catch(Exception)
+                {
+                    LogBox.Text += $"Erreur dossier : {d} peux pas etre supprimé" + Environment.NewLine;
+                }
+            }
+            foreach (string f in toDeleteFiles)
+            {
+                
+                LogBox.Text += $"Deleting : {f}" + Environment.NewLine;
+                try
+                {    
+                    File.Delete(f);
+                }
+                catch (Exception)
+                {
+                    LogBox.Text += $"Erreur fichier : {f} peux pas etre supprimé" + Environment.NewLine;
+                }
+            }
+            SpaceToCleanLabel.Content = "Espace à nettoyer : 0 Mo";
+            LogBox.Text += "Nettoyage réussi !";
         }
     }
 }
