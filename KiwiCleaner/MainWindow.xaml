@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KiwiCleaner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="KiwiCleaner" Height="500" Width="900" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="CanMinimize" Icon="/res/KiwiCleaner.png">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Height="108" Background="#FF73626E" Orientation="Horizontal">
+            <Label Content="KiwiCleaner" Foreground="#FFF7E4BE" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="450" HorizontalAlignment="Left" Height="104" FontSize="36" FontFamily="Bahnschrift"/>
+            <StackPanel Width="439">
+                <Label Content="Dernière analyse :" Foreground="#FFF7E4BE" FontSize="24" FontFamily="Bahnschrift"/>
+                <Label x:Name="LastScanLabel" Content="Jamais" Foreground="#FFF7E4BE" FontSize="20" FontFamily="Bahnschrift"/>
+                <Label x:Name="SpaceToCleanLabel" Content="Espace à nettoyer : ? Mo" Foreground="#FFF7E4BE" FontSize="24" FontFamily="Bahnschrift"/>
 
-    </Grid>
+            </StackPanel>
+
+            <!-- Info section -->
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Left" Background="#FF73626E" Width="151">
+            <Button x:Name="ScanBtn"  Height="100" Background="{x:Null}" Foreground="#FFF7E4BE" BorderThickness="10,10,10,10" BorderBrush="#FFF7E4BE" Grid.IsSharedSizeScope="True" Margin="0,10,0,0" FontFamily="Bahnschrift" FontSize="16" Click="ScanBtn_Click">
+                <StackPanel>
+                    <Image Source="/res/analysis.png" Height="48" Width="48"/>
+                    <Label Content="Analyser" HorizontalAlignment="Center" Foreground="#FFF7E4BE"/>
+                </StackPanel>
+            </Button>
+            <Button IsEnabled="False" x:Name="CleanBtn" Height="100" Background="{x:Null}" Foreground="#FFF7E4BE" BorderThickness="10,10,10,10" BorderBrush="#FFF7E4BE" Margin="0,10,0,0" FontSize="16" FontFamily="Bahnschrift" Click="CleanBtn_Click">
+                <StackPanel>
+                    <Image Source="/res/clean.png" Height="48" Width="48"/>
+                    <Label Content="Nettoyer" HorizontalAlignment="Center" Foreground="#FFF7E4BE"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="AboutBtn" Height="100" Background="{x:Null}" Foreground="#FFF7E4BE" BorderThickness="10,10,10,10" BorderBrush="#FFF7E4BE" Margin="0,10,0,0" FontFamily="Bahnschrift" FontSize="16" Click="AboutBtn_Click">
+                <StackPanel>
+                    <Image Source="/res/about.png" Height="48" Width="48"/>
+                    <Label Content="À propos" HorizontalAlignment="Center" Foreground="#FFF7E4BE"/>
+                </StackPanel>
+            </Button>
+              
+            <!-- Button section -->
+        </StackPanel>
+        <DockPanel Background="#FF413E4A">
+            <ScrollViewer Margin="37">
+                <TextBox x:Name="LogBox" IsReadOnly="True" Text="Les logs s'afficheront ici..." TextWrapping="Wrap" FontSize="14"/>
+            </ScrollViewer>
+            <!-- Main panel -->
+        </DockPanel>
+
+
+    </DockPanel>
 </Window>
