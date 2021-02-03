@@ -23,6 +23,8 @@
     <None Remove="res\github.png" />
     <None Remove="res\ig-button.png" />
     <None Remove="res\KiwiCleaner.ico" />
+    <None Remove="res\settings.png" />
+    <None Remove="res\sweeping.png" />
     <None Remove="res\virus.png" />
   </ItemGroup>
 
@@ -49,6 +51,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="res\KiwiCleaner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="res\settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="res\sweeping.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="res\virus.png">
