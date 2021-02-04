@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.IO;
 using Path = System.IO.Path;
 using System.Threading;
+using System.Drawing;
 
 namespace KiwiCleaner
 {
@@ -124,5 +125,7 @@ namespace KiwiCleaner
             SpaceToCleanLabel.Content = "Espace à nettoyer : 0 Mo";
             LogBox.Text += "Nettoyage réussi !";
         }
+
+       
     }
 }

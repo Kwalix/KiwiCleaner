@@ -17,6 +17,8 @@
   <ItemGroup>
     <None Remove="analysis.png" />
     <None Remove="KiwiCleaner.png" />
+    <None Remove="res\195-france.png" />
+    <None Remove="res\260-united-kingdom.png" />
     <None Remove="res\about.png" />
     <None Remove="res\bmc-button.png" />
     <None Remove="res\clean.png" />
@@ -29,6 +31,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="res\195-france.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="res\260-united-kingdom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="res\about.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

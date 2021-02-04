@@ -71,12 +71,33 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/res/settings.png" Width="10" Margin="0,0,4,0" />
-                        <TextBlock Text="Parametres"/>
+                        <TextBlock Text="Paramètres"/>
                     </StackPanel>
                 </TabItem.Header>
                 <StackPanel Orientation="Horizontal">
-                    <StackPanel DockPanel.Dock="Left" Width="125">
-                        <CheckBox IsChecked="True" Content="Fichier temporaire" Width="118"/>
+                    <StackPanel DockPanel.Dock="Left" Width="306">
+                        <Label Content="Préférences :" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="18" Foreground="#FFF7E4BE" Margin="0,2,0,0"/>
+                        <CheckBox IsChecked="True" Content="Fichier temporaire" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                        <CheckBox IsChecked="True" Content="Supprimer les Téléchargement de...&#xD;&#xA;MS Update" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                        <CheckBox IsChecked="True" Content="Supprimer les caches de MS Store" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                        <CheckBox IsChecked="True" Content="Supprimer les caches DNS" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                        <CheckBox IsChecked="True" Content="Supprimer les fichiers Prefetch" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                        <RibbonSeparator Width="232" Height="3" Margin="0,10,0,0" />
+                        <Label Content="Langue : (À venir)" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="18" Foreground="#FFF7E4BE" Margin="0,2,0,0"/>
+                        <ComboBox IsEnabled="False" Width="149" Height="30">
+                            <ComboBoxItem IsSelected="True" >
+                                <WrapPanel>
+                                    <TextBlock Text="Français (Default) " VerticalAlignment="Center" />
+                                    <Image Height="25" Source="/res/195-france.png" />
+                                </WrapPanel>
+                            </ComboBoxItem>
+                            <ComboBoxItem >
+                                <WrapPanel>
+                                    <TextBlock Text="English " VerticalAlignment="Center" />
+                                    <Image Height="25" Source="/res/260-united-kingdom.png" />
+                                </WrapPanel>
+                            </ComboBoxItem>
+                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
