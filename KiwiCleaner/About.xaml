@@ -10,7 +10,7 @@
     <StackPanel>
         <StackPanel Margin="50">
             <Label Content="Crée par : Kwalix" FontFamily="Bahnschrift" Foreground="#FFF7E4BE" FontSize="24"/>
-            <Label Content="Version : 1.0.0" FontFamily="Bahnschrift" Foreground="#FFF7E4BE" FontSize="18"/>
+            <Label Content="Version : 1.1.0" FontFamily="Bahnschrift" Foreground="#FFF7E4BE" FontSize="18"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="50" HorizontalAlignment="Center">
 

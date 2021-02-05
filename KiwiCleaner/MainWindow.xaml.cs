@@ -27,6 +27,7 @@ namespace KiwiCleaner
         public MainWindow()
         {
             InitializeComponent();
+            FetchPreferences();
             FetchLastScan();
         }
 
@@ -126,6 +127,70 @@ namespace KiwiCleaner
             LogBox.Text += "Nettoyage réussi !";
         }
 
-       
+       private void FetchPreferences()
+        {
+            if (File.Exists(@".\preferences.txt"))
+            {
+                string[] preferences = File.ReadAllLines(@".\preferences.txt");
+                foreach(string pref in preferences)
+                {
+                    if(pref.Contains("true") || pref.Contains("True"))
+                    {
+                        if(pref.Contains("TmpFileBox"))
+                        {
+                            TmpFileBox.IsChecked = true;
+                        } else if(pref.Contains("MSUBox"))
+                        {
+                            MSUBox.IsChecked = true;
+                        } else if (pref.Contains("MSSCacheBox"))
+                        {
+                            MSSCacheBox.IsChecked = true;
+                        } else if (pref.Contains("DNSCacheBox"))
+                        {
+                            DNSCacheBox.IsChecked = true;
+                        } else if (pref.Contains("PFBox"))
+                        {
+                            PFBox.IsChecked = true;
+                        }
+                    } else if (pref.Contains("false") || pref.Contains("False"))
+                    {
+                        if (pref.Contains("TmpFileBox"))
+                        {
+                            TmpFileBox.IsChecked = false;
+                        }
+                        else if (pref.Contains("MSUBox"))
+                        {
+                            MSUBox.IsChecked = false;
+                        }
+                        else if (pref.Contains("MSSCacheBox"))
+                        {
+                            MSSCacheBox.IsChecked = false;
+                        }
+                        else if (pref.Contains("DNSCacheBox"))
+                        {
+                            DNSCacheBox.IsChecked = false;
+                        }
+                        else if (pref.Contains("PFBox"))
+                        {
+                            PFBox.IsChecked = false;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private async void SavePrefBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string getBoxState = $"TmpFileBox={TmpFileBox.IsChecked.ToString()}" + Environment.NewLine
+                + $"MSUBox={MSUBox.IsChecked.ToString()}" + Environment.NewLine
+                + $"MSSCacheBox={MSSCacheBox.IsChecked.ToString()}" + Environment.NewLine
+                + $"DNSCacheBox={DNSCacheBox.IsChecked.ToString()}" + Environment.NewLine
+                + $"PFBox={PFBox.IsChecked.ToString()}";
+            File.WriteAllText(@".\preferences.txt", getBoxState , Encoding.UTF8);
+            SaveSuccessLb.Opacity = 100;
+            await Task.Delay(2500);
+            SaveSuccessLb.Opacity = 0;
+        }
     }
 }

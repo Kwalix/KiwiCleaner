@@ -75,30 +75,35 @@
                     </StackPanel>
                 </TabItem.Header>
                 <StackPanel Orientation="Horizontal">
-                    <StackPanel DockPanel.Dock="Left" Width="306">
-                        <Label Content="Préférences :" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="18" Foreground="#FFF7E4BE" Margin="0,2,0,0"/>
-                        <CheckBox IsChecked="True" Content="Fichier temporaire" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
-                        <CheckBox IsChecked="True" Content="Supprimer les Téléchargement de...&#xD;&#xA;MS Update" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
-                        <CheckBox IsChecked="True" Content="Supprimer les caches de MS Store" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
-                        <CheckBox IsChecked="True" Content="Supprimer les caches DNS" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
-                        <CheckBox IsChecked="True" Content="Supprimer les fichiers Prefetch" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
-                        <RibbonSeparator Width="232" Height="3" Margin="0,10,0,0" />
-                        <Label Content="Langue : (À venir)" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="18" Foreground="#FFF7E4BE" Margin="0,2,0,0"/>
-                        <ComboBox IsEnabled="False" Width="149" Height="30">
-                            <ComboBoxItem IsSelected="True" >
-                                <WrapPanel>
-                                    <TextBlock Text="Français (Default) " VerticalAlignment="Center" />
-                                    <Image Height="25" Source="/res/195-france.png" />
-                                </WrapPanel>
-                            </ComboBoxItem>
-                            <ComboBoxItem >
-                                <WrapPanel>
-                                    <TextBlock Text="English " VerticalAlignment="Center" />
-                                    <Image Height="25" Source="/res/260-united-kingdom.png" />
-                                </WrapPanel>
-                            </ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
+                    <Border CornerRadius="1" BorderBrush="Black" Background="#00D3D3D3" BorderThickness="1" DockPanel.Dock="Top">
+                        <StackPanel DockPanel.Dock="Left">
+                            <Label Content="Préférences :" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="18" Foreground="#FFF7E4BE" Margin="0,2,0,0"/>
+                            <CheckBox x:Name="TmpFileBox" IsChecked="True" Content="Fichier temporaire" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                            <CheckBox x:Name="MSUBox" IsChecked="False" Content="Supprimer les Téléchargement de...&#xD;&#xA;MS Update" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                            <CheckBox x:Name="MSSCacheBox" IsChecked="False" Content="Supprimer les caches de MS Store" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                            <CheckBox x:Name="DNSCacheBox" IsChecked="False" Content="Supprimer les caches DNS" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                            <CheckBox x:Name="PFBox" IsChecked="False" Content="Supprimer les fichiers Prefetch" Width="259" Margin="15,10,0,0" Foreground="#FFF7E4BE" FontSize="14" HorizontalAlignment="Left"/>
+                            <RibbonSeparator Width="232" Height="3" Margin="0,10,0,0" />
+                            <Label Content="Langue : (À venir)" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="18" Foreground="#FFF7E4BE" Margin="0,2,0,0"/>
+                            <ComboBox IsEnabled="False" Width="149" Height="30">
+                                <ComboBoxItem IsSelected="True" >
+                                    <WrapPanel>
+                                        <TextBlock Text="Français (Default) " VerticalAlignment="Center" />
+                                        <Image Height="25" Source="/res/195-france.png" />
+                                    </WrapPanel>
+                                </ComboBoxItem>
+                                <ComboBoxItem >
+                                    <WrapPanel>
+                                        <TextBlock Text="English " VerticalAlignment="Center" />
+                                        <Image Height="25" Source="/res/260-united-kingdom.png" />
+                                    </WrapPanel>
+                                </ComboBoxItem>
+                            </ComboBox>
+                            <Label Content="Sauvegarder les préférences :" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="18" Foreground="#FFF7E4BE" Margin="0,15,0,0"/>
+                            <Button x:Name="SavePrefBtn" Content="Sauvegarder" HorizontalAlignment="Center" Width="81" Height="35" Background="#FFF7E4BE" BorderBrush="#FFF7E4BE" Click="SavePrefBtn_Click" />
+                            <Label Opacity="0" x:Name="SaveSuccessLb" Content="Préférences sauvegardé !" FontFamily="Bahnschrift" FontSize="18" Foreground="#FF22C112" Margin="0,15,0,0" Background="{x:Null}"/>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
             </TabItem>
         </TabControl>
